@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Nova+Mono|Roboto+Condensed">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <title>Performance of Arrays & Objects</title>
+</head>
+<body>
+    <div class="wrapper d-flex flex-column">
+      <div class="main d-flex flex-grow-1">
+        <div class="content">
+            <nav class="navbar navbar-light bg-light shadow-sm">
+              <a class="navbar-brand text-uppercase" href="#">Performance of Arrays & Objects</a>
+            </nav>
+            <div class="container-fluid py-2">
+              <div class="shadow-lg p-5 mb-5 bg-white rounded">
+                <h2>Big O of Arrays and Objects</h2>
+                <hr>
+                <p>
+                  With Big O we can analyse how arrays and objects perform based on the operations performed on them using their built-in methods. Arrays and Objects are built-in data types in Javascript that are considered to be Reference data types. This simply means that when you create an object/array and assign it to a variable, the reference to that value is what is set and not the value itself. Our objectives of Big O here is to:
+                  <ol type="I">
+                    <li>Understand how objects and arrays work, through the lens of Big O</li>
+                    <li>Explain why adding elements to the beginning of an array is costly</li>
+                    <li>Compare and contrast the runtime for arrays and objects, as well as built-in methods</li>
+                  </ol>
+                </p>
+                <hr>
+                <section>                                    
+                  <h5><b>Analyzing Objects</b></h5>
+                  <p>An object is a collection of properties, and a property is an association between a name (or key) and a value. Simply put an object is an unordered list of key value pairs. Consider the object below called <b>instructor</b>.</p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">let instructor <span style="color: #339933;">=</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    firstName<span style="color: #339933;">:</span> <span style="color: #3366CC;">&quot;Kelly&quot;</span><span style="color: #339933;">,</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    isInstructor<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    favoriteNumbers<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span><span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><span style="color: #CC0000;">2</span><span style="color: #339933;">,</span><span style="color: #CC0000;">3</span><span style="color: #339933;">,</span><span style="color: #CC0000;">4</span><span style="color: #009900;">&#93;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li></ol></pre>
+                  </div>
+                  <p>With the above, we would say that the Big O of Objects is:</p>
+                  <ol type="I">
+                    <li>Insertion has a Big O of O(1)</li>
+                    <li>Accessing a value has a Big O of O(1)</li>
+                    <li>Removal of a value has a Big O of O(1)</li>
+                    <li>Searching a value has a Big O of O(n)</li>
+                  </ol>
+                  <p>This means that objects in general are very fast and the only thing that would take a while to perform is searching through an object. Another thing to consider is the Big O of object methods where:</p>
+                  <ol type="I">
+                    <li>Object.keys() has a Big O of O(n)</li>
+                    <li>Object.values() has a Big O of O(n)</li>
+                    <li>Object.entries() has a Big O of O(n)</li>
+                    <li>{object}.hasOwnProperty() has a Big O of O(1)</li>
+                  </ol>
+                </section>
+                <section>                                    
+                  <h5><b>Analyzing Arrays</b></h5>
+                  <p>Unlike objects arrays are a ordered list of values and can contain objects even other arrays. Consider the arrays below called <b>names</b> and <b>values</b>.</p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">let names <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span><span style="color: #3366CC;">&quot;Michael&quot;</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;Melissa&quot;</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;Andrea&quot;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">let values <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span><span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span> <span style="color: #CC0000;">2</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;awesome&quot;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span></div></li></ol></pre>
+                  </div>
+                  <p>Because of the ordered nature that arrays have some operations may take longer than others. With that in mind we see that arrays have a Big O of:</p>
+                  <ol type="I">
+                    <li>Insertion Big O depends on the methods used to insert into an array. For example, because all array values have an index, if you insert a value at the beginning of the array you will have to reindex all values. This will continue everytime you insert at the beginning of the array O(n). If inserting at the end of the array, this will be faster with a Big O of O(1)</li>
+                    <li>Removal also behaves the same way as insertion where if removing values at the beginning of the array, you will have to reindex the values O(n). Removing values at the end of the array is faster with a Big O of O(1).</li>
+                    <li>Access has a Big O of O(1)</li>
+                    <li>Searching has a Big O of O(n)</li>
+                  </ol>
+                </section>
+                <div class="d-flex flex-row justify-content-between align-items-center">
+                  <div class="p-2"><a class="btn btn-outline-primary btn-sm" href="/" role="button">&lt;&lt; Back</a></div>
+                  <div class="p-2"><a class="btn btn-outline-success btn-sm" href="/Lesson 03 - PS Approach" role="button">Next &gt;&gt;</a></div>                   
+                </div>
+              </div>
+            </div>
+        </div>
+        <aside class="sidebar p-4">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/">Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white active" href="/Lesson 02 - Arrays|Objects">Performance of Arrays & Objects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 03 - PS Approach">Problem Solving Approach</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 04 - PS Patterns">Problem Solving Patterns</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 05 - Recursion">Recursion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 06 - Recursion PS">Recursion Problem Set</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 07 - Searching Algorithms">Searching Algorithms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 08 - Bubble Sort">Bubble Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 09 - Selection Sort">Selection Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 10 - Insertion Sort">Insertion Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 11 - Comparing Sorts">Comparing Bubble, Selection and Insertion Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 12 - Merge Sort">Merge Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 13 - Quick Sort">Quick Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 14 - Radix Sort">Radix Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 15 - Data Structures Introduction">Data Structures Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 16 - Singly Linked Lists">Singly Linked Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 17 - Doubly Linked Lists">Doubly Linked Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 18 - Stacks|Queues">Stacks + Queues</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 19 - Binary Search Trees">Binary Search Trees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 20 - Tree Traversal">Tree Traversal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 21 - Binary Heaps">Binary Heaps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 22 - Hash Tables">Hash Tables</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 23 - Graphs">Graphs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 24 - Graph Traversal">Graph Traversal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 25 - DA">Dijkstra Algorithm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 26 - Dynamic Programming">Dynamic Programming</a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="../assets/scripts/lesson-one/app.js"></script>
+</body>
+</html>

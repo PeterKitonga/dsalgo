@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Nova+Mono|Roboto+Condensed">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <title>Big O Notation</title>
+</head>
+<body>
+    <div class="wrapper d-flex flex-column">
+      <div class="main d-flex flex-grow-1">
+        <div class="content">
+            <nav class="navbar navbar-light bg-light shadow-sm">
+              <a class="navbar-brand text-uppercase" href="#">Introduction - Big O Notation</a>
+            </nav>
+            <div class="container-fluid py-2">
+              <div class="shadow-lg p-5 mb-5 bg-white rounded">
+                <h2>Big O Notation</h2>
+                <hr>
+                <p>
+                  Big O notation is a way to formalize fuzzy counting. This means it allows us to talk formally about how the runtime of an algorithm grows as the inputs grow. 
+                  With big O notation, we tend to look at the bigger picture of measuring the quality of our code by measuring the number of operations the server has to perform to run our code.
+                  We could say that an algorithm is O(f(n)) if the number of simple operations a server has to do is eventually less than a constant times f(n), as n increases where f() denotes the
+                  function and n denotes the input of function f(). This brings about 4 categorizations of Big O where:
+                  <ol type="I">
+                    <li>f(n) could be linear O(f(n) = n) this means runtime is proportional to the value of n</li>
+                    <li>f(n) could be quadratic O(f(n) = n^2) this means we have two linear functions where n is run twice as much(loop within a loop)</li>
+                    <li>f(n) could be constant O(f(n) = 1) this means runtime is always roughly constant</li>
+                    <li>f(n) could be something entirely different which means it doesn't fall in any of the above notations</li>
+                  </ol>
+                  Consider the examples below where we calculate the sum of all numbers from 1 up to (and including) some number n.
+                </p>
+                <hr>
+                <section>                                    
+                  <h5><b>Example One</b></h5>
+                  <p>Here we have way more number of operations because of the loop. This means the number of operations grow proportional to the value of n thus this runs slower. This means this has a big O of n denoted as O(n).</p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> addUpToFirst <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>n<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    let total <span style="color: #339933;">=</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">for</span> <span style="color: #009900;">&#40;</span>let index <span style="color: #339933;">=</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">;</span> index <span style="color: #339933;">&lt;=</span> n<span style="color: #339933;">;</span> index<span style="color: #339933;">++</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        total <span style="color: #339933;">+=</span> index<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">return</span> total<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li></ol></pre>
+                  </div>
+                </section>
+                <section>                                    
+                  <h5><b>Example Two</b></h5>
+                  <p>Here we have 3 operations(1 multiplication, 1 addition and 1 division) that the server performs regardless of the size of n. This means this would ran faster than example one above. This has a big O of 1 denoted by O(1).</p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> addUpToSecond <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>n<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">return</span> n <span style="color: #339933;">*</span> <span style="color: #009900;">&#40;</span>n <span style="color: #339933;">+</span> <span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">/</span> <span style="color: #CC0000;">2</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li></ol></pre>
+                  </div>
+                  <p>To see this in action open the console to see how long it takes for both examples to run with an input of <code>1,000,000,000</code></p>
+                </section>
+                <section>
+                  <h5><b>Simplifying Big O</b></h5>
+                  <p>With the above examples we come to see that there are rules to simplifying expressions for Big O notations where:</p>
+                  <ol type="I">
+                    <li>Arithmetic operations are always constant</li>
+                    <li>Variable assignment is also constant</li>
+                    <li>Accessing an element in an array(by index) or object(by key) is constant</li>
+                    <li>In a loop, the complexity is the length of the loop times the complexity of whatever happends inside the loop</li>
+                  </ol>
+                </section>
+                <section>
+                  <h5><b>Space Complexity(auxilliary space complexity)</b></h5>
+                  <p>
+                    In the above sections, the main focus has been on <b>time complexity</b> where we analyse the runtime of an algorithm as the size of the inputs increase. 
+                    However, Big O notation can also be used to analyse <b>space complexity</b> which checks on how much additional memory do we need to allocate in order to run an algorithm.
+                    There are rules guiding space complexity which include:
+                  </p>
+                  <ol type="I">
+                    <li>Most primitives such as booleans, numbers, undefined and null are constant space</li>
+                    <li>Strings require O(n) space where n is the string length. This means bigger the number of characters there are in a string the more space it takes</li>
+                    <li>Reference types are generally O(n) space, where n is the length(for arrays) or the number of keys(for objects)</li>
+                  </ol>
+                </section>
+                <div class="d-flex flex-row justify-content-end align-items-center">               
+                  <div class="p-2"><a class="btn btn-outline-success btn-sm" href="/Lesson 02 - Arrays|Objects" role="button">Next &gt;&gt;</a></div>                   
+                </div>
+              </div>
+            </div>
+        </div>
+        <aside class="sidebar p-4">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-white active" href="/">Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 02 - Arrays|Objects">Performance of Arrays & Objects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 03 - PS Approach">Problem Solving Approach</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 04 - PS Patterns">Problem Solving Patterns</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 05 - Recursion">Recursion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 06 - Recursion PS">Recursion Problem Set</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 07 - Searching Algorithms">Searching Algorithms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 08 - Bubble Sort">Bubble Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 09 - Selection Sort">Selection Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 10 - Insertion Sort">Insertion Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 11 - Comparing Sorts">Comparing Bubble, Selection and Insertion Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 12 - Merge Sort">Merge Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 13 - Quick Sort">Quick Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 14 - Radix Sort">Radix Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 15 - Data Structures Introduction">Data Structures Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 16 - Singly Linked Lists">Singly Linked Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 17 - Doubly Linked Lists">Doubly Linked Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 18 - Stacks|Queues">Stacks + Queues</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 19 - Binary Search Trees">Binary Search Trees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 20 - Tree Traversal">Tree Traversal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 21 - Binary Heaps">Binary Heaps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 22 - Hash Tables">Hash Tables</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 23 - Graphs">Graphs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 24 - Graph Traversal">Graph Traversal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 25 - DA">Dijkstra Algorithm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 26 - Dynamic Programming">Dynamic Programming</a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="../assets/scripts/lesson-one/app.js"></script>
+</body>
+</html>

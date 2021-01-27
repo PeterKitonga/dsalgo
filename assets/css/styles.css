@@ -1,0 +1,17 @@
+.wrapper {
+    min-height: 100vh;
+}
+
+.main .content {
+    flex: 4 1 80%;
+}
+
+.main .content pre, .main .content pre ol {
+    margin-bottom: 0;
+}
+
+.main .sidebar {
+    background-color: darkslategray;
+    flex: 1 1 10%;
+    order: -1;
+}
