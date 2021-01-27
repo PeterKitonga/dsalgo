@@ -15,7 +15,7 @@ git clone https://github.com/PeterKitonga/dsalgo.git
 - Navigate to the project and click on the `index.html` file of a lesson
 
 ### Illustration
-![Illustration Example](assets/images/nodejs_screenshot.png)
+![Illustration Example](assets/images/dsalgo_screenshot.png)
 
 ### Tutorial
-Visit [Udemy](https://www.udemy.com/course/nodejs-the-complete-guide) for the tutorial
+Visit [Udemy](https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass) for the tutorial
