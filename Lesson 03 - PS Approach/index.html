@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Nova+Mono|Roboto+Condensed">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <title>Problem Solving Approach</title>
+</head>
+<body>
+    <div class="wrapper d-flex flex-column">
+      <div class="main d-flex flex-grow-1">
+        <div class="content">
+            <nav class="navbar navbar-light bg-light shadow-sm">
+              <a class="navbar-brand text-uppercase" href="#">Problem Solving Approach</a>
+            </nav>
+            <div class="container-fluid py-2">
+              <div class="shadow-lg p-5 mb-5 bg-white rounded">
+                <h2>Problem Solving Approach</h2>
+                <hr>
+                <p>
+                  When we talk about problem solving approaches we tend to think about algorithms. An algorithm is a process or set of steps to accomplish a certain task. With problem solving in mind we have certain objectives we want to achieve, which are:
+                  <ol type="I">
+                    <li>Devise a plan to solve algorithms</li>
+                    <li>Compare and contrast problem solving patterns</li>
+                  </ol>
+                  There are 5 things to keep in mind when devising a plan to solve a problem:
+                  <ol type="I">
+                    <li>Understand the problem</li>
+                    <li>Explore concrete examples</li>
+                    <li>Break it down</li>
+                    <li>Solve/simplify</li>
+                    <li>Look back and refactor</li>
+                  </ol>
+                  Let's look at each of these below.
+                </p>
+                <hr>
+                <section>                                    
+                  <h5><b>Understand the problem</b></h5>
+                  <p>It is important that we understand the problem before we begin solving it. Suppose we are given the below problem to solve.</p>
+                  <h6>Problem: <b>Write a function which takes two numbers and returns their sum.</b> </h6>
+                  <p>To understand this problem there are 5 question we should ask ourselves:</p>
+                  <ol type="I">
+                    <li>
+                      Can I restate the problem in my own words? <br>
+                      For example, in the above we could say: "add two numbers"
+                    </li>
+                    <li>
+                      What are the inputs that go into the problem? <br>
+                      - Are they ints? floats? string for large numbers?
+                    </li>
+                    <li>
+                      What are the outputs that should come from the solution to the problem? <br>
+                      - Also are they ints? floats? string?
+                    </li>
+                    <li>
+                      Can the outputs be determined from the inputs? In other words, do I have enough information to solve the problem? <br>
+                      - What if one of the inputs is not passed or null, what happens then?
+                    </li>
+                    <li>
+                      How should I label the important pieces of data that are a part of the problem? <br>
+                      - What operators, methods, loops are essentials to solve the problem?
+                    </li>
+                  </ol>
+                </section>
+                <section>                                    
+                  <h5><b>Explore concrete examples</b></h5>
+                  <p>Examples provide sanity checks that your eventual solution works how it should. Consider the problem below.</p>
+                  <h6>Problem: <b>Write a function which takes in a string and returns counts of each character in the string.</b> </h6>
+                  <p>After going through the steps in the above section to understand the problem, lets go through some examples to further understand the above problem: </p>
+                  <ol type="I">
+                    <li>
+                      Start with Simple Examples <br>
+                      At this point we have determined that the output is an object. Lets start with a simple example like: <br>
+                      <code>charCount("aaaa"); // output would be {a: 4}</code> <br>
+                      <code>charCount("hello"); // output would be {h: 1, e: 1, l: 2, o: 1}</code>
+                    </li>
+                    <li>
+                      Progress to More Complex Examples <br>
+                      If our input is a sentence do we consider the spaces(or even integers and symbols) as characters? e.g. <code>charCount("my phone number is 1232424");</code> <br>
+                      Do we also consider case sensitivity? e.g. <code>charCount("Hello hi");</code>
+                    </li>
+                    <li>
+                      Explore Examples with Empty Inputs <br>
+                      What do we return when the input is empty: <code>charCount("") // null/undefined/empty object</code>
+                    </li>
+                    <li>
+                      Explore Examples with Invalid Inputs <br>
+                      What about if the input is anything other than a string e.g. <code>charCount(123232)</code>
+                    </li>
+                  </ol>
+                </section>
+                <section>                                    
+                  <h5><b>Break it down</b></h5>
+                  <p>Here, you explicitly write out the steps you need to take. This forces you to think about the code you'll write before you write it, and helps you catch any lingering conceptual issues or misunderstandings before you dive in and have to worry about details. Consider the same problem as the above section.</p>
+                  <h6>Problem: <b>Write a function which takes in a string and returns counts of each character in the string.</b> </h6>
+                  <p>
+                    Assuming the instructions are to consider alphanumerics(numbers and letters), ignore spaces and convert uppercase to lowercase letters. We would visualize that the outcome will look something like: <br>
+                    <code>charCount("Your PIN number is 1234!") // { 1: 1, 2: 1, 3: 1, 4: 1, o: 1, u: 2, ... }</code>
+                  </p>
+                  <p>So to break it down we would do something like: </p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> charCount <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>string<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// make object to return at end</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// loop over string</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">      <span style="color: #006600; font-style: italic;">// if the char is a number/letter AND is a key in object, add one to count</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">      <span style="color: #006600; font-style: italic;">// if the char is a number/letter AND not in object, add it to object and set value to 1</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">      <span style="color: #006600; font-style: italic;">// if the char is something else(space, period, e.t.c.) don't do anything</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">   <span style="color: #006600; font-style: italic;">// return an object with keys that are lowercase alphanumeric characters</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li></ol></pre>
+                  </div>
+                </section>
+                <section>                                    
+                  <h5><b>Solve or Simplify</b></h5>
+                  <p>Here, you should try to solve the problem if not simplify it. To simplify a problem we should:</p>
+                  <ol type="I">
+                    <li>
+                      Find the core difficulty in what you're trying to do
+                    </li>
+                    <li>
+                      Temporarily ignore that difficulty
+                    </li>
+                    <li>
+                      Write a simplified solution
+                    </li>
+                    <li>
+                      Then incorporate that difficulty back in
+                    </li>
+                  </ol>
+                  <h6>Problem: <b>Write a function which takes in a string and returns counts of each character in the string.</b> </h6>
+                  <p>
+                    Assuming the instructions are to consider alphanumerics(numbers and letters), ignore spaces and convert uppercase to lowercase letters. We would visualize that the outcome will look something like: <br>
+                    <code>charCount("Your PIN number is 1234!") // { 1: 1, 2: 1, 3: 1, 4: 1, o: 1, u: 2, ... }</code>
+                  </p>
+                  <p>Lets simplify it as we solve and follow the steps above: </p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> charCount <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>string<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// make object to return at end</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">const</span> result <span style="color: #339933;">=</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// convert string to lowercase</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  string <span style="color: #339933;">=</span> string.<span style="color: #660066;">toLowerCase</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// loop over string</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">for</span><span style="color: #009900;">&#40;</span><span style="color: #FF0000;">char</span> of string<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #000066; font-weight: bold;">if</span><span style="color: #009900;">&#40;</span>result<span style="color: #009900;">&#91;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">&gt;</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  <span style="color: #006600; font-style: italic;">// if the char is a number/letter AND is a key in object, add one to count</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  result<span style="color: #009900;">&#91;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">++;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #009900;">&#125;</span> <span style="color: #000066; font-weight: bold;">else</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  <span style="color: #006600; font-style: italic;">// if the char is a number/letter AND not in object, add it to object and set value to 1</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  result<span style="color: #009900;">&#91;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// if the char is something else(space, period, e.t.c.) don't do anything (DIFFICULT PART)</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// return an object with keys that are lowercase alphanumeric characters</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">return</span> result<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li></ol></pre>
+                  </div>
+                  <p>Now if we incorporate back the difficult parts we get something like:</p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> charCount <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>string<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// make object to return at end</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">const</span> result <span style="color: #339933;">=</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// convert string to lowercase</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  string <span style="color: #339933;">=</span> string.<span style="color: #660066;">toLowerCase</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// loop over string</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">for</span><span style="color: #009900;">&#40;</span><span style="color: #FF0000;">char</span> of string<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #006600; font-style: italic;">// if the char is something else(space, period, e.t.c.) don't do anything (DIFFICULT PART INCORPORATE BACK)</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #006600; font-style: italic;">/**</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;       * Below is a regex prototype test() which checks if the param passed matches the regural expression</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;       * More info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;       */</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #000066; font-weight: bold;">if</span><span style="color: #009900;">&#40;</span><span style="color: #009966; font-style: italic;">/[a-z0-9]/</span>.<span style="color: #660066;">test</span><span style="color: #009900;">&#40;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  <span style="color: #000066; font-weight: bold;">if</span><span style="color: #009900;">&#40;</span>result<span style="color: #009900;">&#91;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">&gt;</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">		<span style="color: #006600; font-style: italic;">// if the char is a number/letter AND is a key in object, add one to count</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">		result<span style="color: #009900;">&#91;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">++;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  <span style="color: #009900;">&#125;</span> <span style="color: #000066; font-weight: bold;">else</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">		<span style="color: #006600; font-style: italic;">// if the char is a number/letter AND not in object, add it to object and set value to 1</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">		result<span style="color: #009900;">&#91;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// return an object with keys that are lowercase alphanumeric characters</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">return</span> result<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li></ol></pre>
+                  </div>
+                </section>
+                <section>                                    
+                  <h5><b>Look Back and Refactor</b></h5>
+                  <p>Once we solve a problem, it is desirable that we look back at our solution and think of how we can refactor it. This helps us improve on our solution and possibly look at other ways we could solve our problem. There are a couple of questions we can ask ourselves when refactoring our code:</p>
+                  <ol type="I">
+                    <li>
+                      Can you check the result?
+                    </li>
+                    <li>
+                      Can you derive the result differently?
+                    </li>
+                    <li>
+                      Can you use the result or method for some other problem?
+                    </li>
+                    <li>
+                      Can you improve the performance of your solution?
+                    </li>
+                    <li>
+                      Can you think of other ways to refactor?
+                    </li>
+                    <li>
+                      How have other people solved this problem?
+                    </li>
+                  </ol>
+                  <h6>Problem: <b>Write a function which takes in a string and returns counts of each character in the string.</b> </h6>
+                  <p>
+                    Assuming the instructions are to consider alphanumerics(numbers and letters), ignore spaces and convert uppercase to lowercase letters. We would visualize that the outcome will look something like: <br>
+                    <code>charCount("Your PIN number is 1234!") // { 1: 1, 2: 1, 3: 1, 4: 1, o: 1, u: 2, ... }</code>
+                  </p>
+                  <p>Lets refactor the solution we got in the above section:</p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> charCount <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>string<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// make object to return at end</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">const</span> result <span style="color: #339933;">=</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// convert string to lowercase</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  string <span style="color: #339933;">=</span> string.<span style="color: #660066;">toLowerCase</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// loop over string</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">for</span><span style="color: #009900;">&#40;</span>let <span style="color: #FF0000;">char</span> of string<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #006600; font-style: italic;">// if the char is something else(space, period, e.t.c.) don't do anything (DIFFICULT PART INCORPORATE BACK)</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #006600; font-style: italic;">/**</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;          * Here, we have refactored to a function that checks the character code of each character and verifies</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;          * if it is alphanumeric. We do this because regular expressions tend to be slower in execution</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;         */</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #000066; font-weight: bold;">if</span><span style="color: #009900;">&#40;</span>isAlphaNumeric<span style="color: #009900;">&#40;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  <span style="color: #006600; font-style: italic;">// Refactored from if...else statement</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  result<span style="color: #009900;">&#91;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #339933;">++</span>result<span style="color: #009900;">&#91;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">||</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #006600; font-style: italic;">// return an object with keys that are lowercase alphanumeric characters</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">return</span> result<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> isAlphaNumeric <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span><span style="color: #FF0000;">char</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  let code <span style="color: #339933;">=</span> <span style="color: #FF0000;">char</span>.<span style="color: #660066;">charCodeAt</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #009900;">&#40;</span>code <span style="color: #339933;">&gt;</span> <span style="color: #CC0000;">47</span> <span style="color: #339933;">&amp;&amp;</span> code <span style="color: #339933;">&lt;</span> <span style="color: #CC0000;">58</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">&amp;&amp;</span> <span style="color: #006600; font-style: italic;">// numeric (0-9)</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  <span style="color: #339933;">!</span><span style="color: #009900;">&#40;</span>code <span style="color: #339933;">&gt;</span> <span style="color: #CC0000;">64</span> <span style="color: #339933;">&amp;&amp;</span> code <span style="color: #339933;">&lt;</span> <span style="color: #CC0000;">91</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">&amp;&amp;</span> <span style="color: #006600; font-style: italic;">// upper alpha (A-Z)</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	  <span style="color: #339933;">!</span><span style="color: #009900;">&#40;</span>code <span style="color: #339933;">&gt;</span> <span style="color: #CC0000;">96</span> <span style="color: #339933;">&amp;&amp;</span> code <span style="color: #339933;">&lt;</span> <span style="color: #CC0000;">123</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">// lower alpha (a-z)</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #009900;">&#125;</span> <span style="color: #000066; font-weight: bold;">else</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">	<span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">  <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li></ol></pre>
+                  </div>
+                </section>
+                <div class="d-flex flex-row justify-content-between align-items-center">
+                  <div class="p-2"><a class="btn btn-outline-primary btn-sm" href="/Lesson 02 - Arrays|Objects" role="button">&lt;&lt; Back</a></div>
+                  <div class="p-2"><a class="btn btn-outline-success btn-sm" href="/Lesson 04 - PS Patterns" role="button">Next &gt;&gt;</a></div>                   
+                </div>
+              </div>
+            </div>
+        </div>
+        <aside class="sidebar p-4">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/">Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 02 - Arrays|Objects">Performance of Arrays & Objects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white active" href="/Lesson 03 - PS Approach">Problem Solving Approach</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 04 - PS Patterns">Problem Solving Patterns</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 05 - Recursion">Recursion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 06 - Recursion PS">Recursion Problem Set</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 07 - Searching Algorithms">Searching Algorithms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 08 - Bubble Sort">Bubble Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 09 - Selection Sort">Selection Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 10 - Insertion Sort">Insertion Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 11 - Comparing Sorts">Comparing Bubble, Selection and Insertion Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 12 - Merge Sort">Merge Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 13 - Quick Sort">Quick Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 14 - Radix Sort">Radix Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 15 - Data Structures Introduction">Data Structures Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 16 - Singly Linked Lists">Singly Linked Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 17 - Doubly Linked Lists">Doubly Linked Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 18 - Stacks|Queues">Stacks + Queues</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 19 - Binary Search Trees">Binary Search Trees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 20 - Tree Traversal">Tree Traversal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 21 - Binary Heaps">Binary Heaps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 22 - Hash Tables">Hash Tables</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 23 - Graphs">Graphs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 24 - Graph Traversal">Graph Traversal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 25 - DA">Dijkstra Algorithm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 26 - Dynamic Programming">Dynamic Programming</a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+      const charCount = (string) => {
+        // make object to return at end
+        const result = {};
+
+        // convert string to lowercase
+        string = string.toLowerCase();
+
+        // loop over string
+        for(let char of string) {
+          // if the char is something else(space, period, e.t.c.) don't do anything (DIFFICULT PART INCORPORATE BACK)
+          /**
+           * Here, we have refactored to a function that checks the character code of each character and verifies
+           * if it is alphanumeric. We do this because regular expressions tend to be slower in execution
+          */
+          if(isAlphaNumeric(char)) {
+            // Refactored from if...else statement
+            result[char] = ++result[char] || 1;
+          }
+        }
+
+        // return an object with keys that are lowercase alphanumeric characters
+        return result;
+      };
+
+      const isAlphaNumeric = (char) => {
+        let code = char.charCodeAt(0);
+
+        if (!(code > 47 && code < 58) && // numeric (0-9)
+            !(code > 64 && code < 91) && // upper alpha (A-Z)
+            !(code > 96 && code < 123)) { // lower alpha (a-z)
+          return false;
+        } else {
+          return true;
+        }
+      }
+
+      let time_one = performance.now();
+      console.log(charCount('Your PIN number is 1234!'));
+      let time_two = performance.now();
+      console.log(`Example One Time Elapsed: ${(time_two - time_one) / 1000} seconds.`);
+    </script>
+</body>
+</html>
