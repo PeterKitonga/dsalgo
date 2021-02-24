@@ -54,7 +54,7 @@ const sameTwo = (array_one, array_two) => {
         }
 
         // check if frequency of the squared value matches
-        if (frequency_counter_one[number] !== frequency_counter_one[number ** 2]) {
+        if (frequency_counter_one[number] !== frequency_counter_two[number ** 2]) {
             return false;
         }
     }
