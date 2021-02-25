@@ -384,7 +384,8 @@ const sameFrequency = (first, second) => {
  * Implement a function called, areThereDuplicates which accepts a variable number of arguments, and checks whether there are any duplicates
  * among the arguments passed in. You can solve this using the frequency counter pattern OR the multiple pointers pattern.
 */
-const areThereDuplicates = (...params) => {
+// Frequency counter pattern
+const areThereDuplicatesOne = (...params) => {
     // check if any arguement is passed, return false if none is passed
     if (params.length === 0) {
         return false;
@@ -413,7 +414,191 @@ const areThereDuplicates = (...params) => {
  * Implement a function called, areThereDuplicates which accepts a variable number of arguments, and checks whether there are any duplicates
  * among the arguments passed in. You can solve this using the frequency counter pattern OR the multiple pointers pattern.
 */
+// Multiple pointers pattern
+const areThereDuplicatesTwo = (...params) => {
+    // check if arguments are empty, return false if empty
+    if (params.length === 0) {
+        return false;
+    }
 
+    // sort the array of arguments
+    params.sort((a,b) => a > b);
+
+    // initialize position of the value to check
+    let position = 1;
+    let end = params.length;
+
+    // loop through values from the position of the current value
+    while(position < end) {
+        // check if current value minus 1 matches value in loop, return true if duplicate
+        if (params[position - 1] === params[position]) {
+            return true;
+        }
+
+        position++;
+    }
+
+    return false;
+}
+
+/**
+ * Write a function called averagePair. Given a sorted array of integers and a target average, determine if there is a pair of values in the array
+ * where the average of the pair equals the target average. There may be more than one pair that matches the average target.
+*/
+const averagePair = (arr, average) => {
+    // check if array is empty, return false
+    if (arr.length === 0) {
+        return false;
+    }
+
+    // initialize the pointers
+    let left = 0;
+    let right = arr.length - 1;
+
+    // loop through the array
+    while(left < right) {
+        // calculate average of values at position of the pointers
+        const current_average = (arr[left] + arr[right]) / 2;
+
+        // check if calculated average equals target average, return true
+        if(current_average === average) {
+            return true
+        } else if(current_average > average) {
+            // decrement right if current average is greater than target average
+            right--; 
+        } else {
+            // increment left if current average is less than target average
+            left++;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Write a function called isSubsequence which takes in two strings and checks whether the characters in the first string form a subsequence of the characters in the second string.
+ * In other words, the function should check whether the characters in the first string appear somewhere in the second string, without their order changing.
+*/
+const isSubsequence = (string_one, string_two) => {
+    // return false if any of the strings is empty
+    if (string_one.length === 0) {
+        return true;
+    }
+
+    // intialize the counters
+    let current = 0;
+    let next = 0;
+
+    // loop through string two while checking on character in string one
+    while (next < string_two.length) {
+        // increment current and equate next to current if characters match
+        if (string_one[current] === string_two[next]) {
+            current++;
+            // we equate to the current position because we only go forward due to sequence
+            next = current;
+        } else {
+            // otherwise increment next
+            next++;
+        }
+    }
+
+    // returns true if all characters in string one were found in the same sequence
+    return current === string_one.length;
+}
+
+/**
+ * Given an array of integers and a number, write a function called maxSubarraySum, which finds the maximum sum of
+ * a subarray with the length of the number passed to the function.
+ * 
+ * Note that a subarray must consist of consecutive elements from the original array.
+*/
+const maxSubarraySum = (arr, num) => {
+    // return null if length of array is less than the num
+    if (arr.length < num) {
+        return null;
+    }
+
+    // initialize max with sum of the first subarray
+    let max = 0;
+
+    for (let i = 0; i < num; i++) {
+        max += arr[i];
+    }
+
+    // equate a temp variable to the first max for comparison
+    let temp = max;
+
+    // loop through after the first sub array
+    for (let j = num; j < arr.length; j++) {
+        // sum items within window
+        temp = temp - arr[j - num] + arr[j];
+
+        // compare the temp sum with the max sum
+        if (temp > max) {
+            max = temp;
+        }
+    }
+
+    return max;
+}
+
+/**
+ * Write a function called minSubArrayLen which accepts two parameters - an array of positive integers and a positive integer. This function should return the minimal length 
+ * of a contiguous subarray of which the sum is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
+*/
+const minSubArrayLen = (arr, target_sum) => {
+    let total = 0;
+    let start = 0;
+    let end = 0;
+    let min_len = Infinity;
+    
+    while (start < arr.length) {
+        // if current window doesn't add up to the given sum then 
+        // move the window to right
+        if(total < target_sum && end < arr.length){
+            total += arr[end];
+            end++;
+        }
+        // if current window adds up to at least the sum given then
+        // we can shrink the window 
+        else if(total >= target_sum){
+            min_len = Math.min(min_len, end-start);
+            total -= arr[start];
+            start++;
+        } 
+        // current total less than required total but we reach the end, need this or else we'll be in an infinite loop 
+        else {
+            break;
+        }
+    }
+    
+    return min_len === Infinity ? 0 : min_len;
+}
+
+/**
+ * Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters.
+*/
+const findLongestSubstring = (str) => {
+    let longest = 0;
+    let seen = {};
+    let start = 0;
+    
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        
+        if (seen[char]) {
+            start = Math.max(start, seen[char]);
+        }
+
+        // index - beginning of substring + 1 (to include current in count)
+        longest = Math.max(longest, i - start + 1);
+
+        // store the index of the next char so as to not double count
+        seen[char] = i + 1;
+    }
+    
+    return longest;
+}
 
 /* ============= TIMING ============= */ 
 
@@ -443,4 +628,16 @@ console.log(`'searchTwo([1,2,3,4,5,6], 6)': ${searchTwo([1,2,3,4,5,6], 6)}`);
 
 console.log(`'sameFrequency(3589578, 5879385)': ${sameFrequency(3589578, 5879385)}`);
 
-console.log(`'areThereDuplicates(1, 2, 2, 3)': ${areThereDuplicates(1, 2, 2, 3)}`);
+console.log(`'areThereDuplicatesOne('a', 'b', 'c', 'd')': ${areThereDuplicatesOne('a', 'b', 'c', 'd')}`);
+
+console.log(`'areThereDuplicatesTwo(1, 0, 20, 1)': ${areThereDuplicatesTwo(1, 0, 20, 1)}`);
+
+console.log(`'averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)': ${averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8)}`);
+
+console.log(`'isSubsequence('abc', 'abracadabra')': ${isSubsequence('abc', 'abracadabra')}`);
+
+console.log(`'maxSubarraySum([100, 200, 300, 400], 2)': ${maxSubarraySum([100, 200, 300, 400], 2)}`);
+
+console.log(`'minSubArrayLen([2, 1, 6, 5, 4], 9)': ${minSubArrayLen([2, 1, 6, 5, 4], 9)}`);
+
+console.log(`'findLongestSubstring('thisishowwedoit')': ${findLongestSubstring('thisishowwedoit')}`);
