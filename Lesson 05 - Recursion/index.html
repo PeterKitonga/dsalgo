@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Nova+Mono|Roboto+Condensed">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <title>Recursion</title>
+</head>
+<body>
+    <div class="wrapper d-flex flex-column">
+      <div class="main d-flex flex-grow-1">
+        <div class="content">
+            <nav class="navbar navbar-light bg-light shadow-sm">
+              <a class="navbar-brand text-uppercase" href="#">Recursion</a>
+            </nav>
+            <div class="container-fluid py-2">
+              <div class="shadow-lg p-5 mb-5 bg-white rounded">
+                <h2>Recursion</h2>
+                <hr>
+                <p>
+                  What is Recursion? Recursion is a process(or most cases a function) that calls itself. This works by invoking the same function with a different input until you reach your base case. The base case is a condition when the recursion ends.
+                  With that in mind, there are two parts of recursion that are important:
+                  <ol type="I">
+                    <li>The <b>base case</b> -  where the recursion ends</li>
+                    <li>The <b>different input</b> - this input is changed and passed to the function during the recursive call</li>
+                  </ol>
+                </p>
+                <p>Consider the simple example below that counts down from an integer passed to zero:</p>
+                <div class="p-3 my-3 bg-light">
+                  <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> countDown <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>num<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// checks wether the recursion has reached the base case</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>num <span style="color: #339933;">&lt;=</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #3366CC;">'Done'</span><span style="color: #339933;">;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// placed just to show case the different inputs</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>`<span style="color: #3366CC;">'Countdown input'</span><span style="color: #339933;">:</span> $<span style="color: #009900;">&#123;</span>num<span style="color: #009900;">&#125;</span>`<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// decrement the input by 1</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    num<span style="color: #339933;">--;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// pass the modified input to the recursive call</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">return</span> countDown<span style="color: #009900;">&#40;</span>num<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li></ol></pre>
+                </div>
+                <p>Let's check some examples below:</p>
+                <hr>
+
+                <section>
+                  <h5><b>Sum Range Problem</b></h5>
+                  <h6>Problem: <b>Write a function called 'sumRange', which accepts an integer num. The function should return the sum of numbers in the range between 1 to the integer passed.</b> </h6>
+                  <p>To visualize it, the function will look like: <code>sumRange(3) // 6</code> </p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> sumRange <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>num<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// base case</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>num <span style="color: #339933;">===</span> <span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// each recursive call will return a value up the call stack to the first return</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">return</span> num <span style="color: #339933;">+</span> sumRange<span style="color: #009900;">&#40;</span>num <span style="color: #339933;">-</span> <span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li></ol></pre>
+                  </div>
+                </section>
+
+                <section>
+                  <h5><b>Factorial Problem</b></h5>
+                  <h6>Problem: <b>Write a function called 'factorialNum', that returns the multiplication of all numbers between 1 and num.</b> </h6>
+                  <p>To visualize it, the function will look like: <code>factorialNum(4) // 24</code> </p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> factorialNum <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>num<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>num <span style="color: #339933;">&lt;=</span> <span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">return</span> num <span style="color: #339933;">*</span> factorialNum<span style="color: #009900;">&#40;</span>num <span style="color: #339933;">-</span> <span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li></ol></pre>
+                  </div>
+                </section>
+
+                <hr>
+
+                <section>
+                  <h5><b>Bonus Concept: Helper Method Recursion</b></h5>
+                  <p>This concept is basically used whenever you need to return data populated using a helper recursive function. In the below example, we demonstrate how you can populate an array of odd numbers from an array input using a helper recursive function.</p>
+                  <h6>Problem: <b>Write a function called 'collectOddValues', that returns odd numbers from an array.</b> </h6>
+                  <p>To visualize it, the function will look like: <code>collectOddValues([1, 2, 3, 4, 5, 6, 7, 8, 9]) // [1, 3, 5, 7, 9]</code> </p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> collectOddValues <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>arr<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// initialize an array to house the results(odd numbers)</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    let result <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">const</span> helper <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>helperInput<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #006600; font-style: italic;">// base case condition</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>helperInput.<span style="color: #660066;">length</span> <span style="color: #339933;">===</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">            <span style="color: #000066; font-weight: bold;">return</span> result<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #006600; font-style: italic;">// check if number is odd, modulus 2 will give remainder</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #000066; font-weight: bold;">if</span><span style="color: #009900;">&#40;</span>helperInput<span style="color: #009900;">&#91;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">%</span> <span style="color: #CC0000;">2</span> <span style="color: #339933;">!==</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">            result.<span style="color: #660066;">push</span><span style="color: #009900;">&#40;</span>helperInput<span style="color: #009900;">&#91;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #006600; font-style: italic;">// remove the first item in the array</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        helperInput.<span style="color: #660066;">splice</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">0</span><span style="color: #339933;">,</span> <span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #006600; font-style: italic;">// pass new array to recursive call</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #000066; font-weight: bold;">return</span> helper<span style="color: #009900;">&#40;</span>helperInput<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    helper<span style="color: #009900;">&#40;</span>arr<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">return</span> result<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li></ol></pre>
+                  </div>
+                </section>
+
+                <section>
+                  <h5><b>Bonus Concept: Pure Recursion</b></h5>
+                  <p>This concept is does not rely on a helper function but rather in merging a set of data over and over as the function is executed in the <a href="https://developer.mozilla.org/en-US/docs/Glossary/Call_stack" target="_blank">call stack.</a></p>
+                  <p>For this concepts there are a few things to consider:</p>
+                  <ol type="I">
+                    <li>For arrays, use methods like <b>slice</b>, the <b>spread operator</b>, and <b>concat</b> that make copies of arrays so you do not mutate them </li>
+                    <li>Remember that strings are immutable so you will need to use methods like <b>slice</b>, <b>substr</b>, or <b>substring</b> to make copies of strings </li>
+                    <li>To make copies of objects use <b>Object.assign</b>, or the <b>spread operator</b> </li>
+                  </ol>
+                  <h6>Problem: <b>Write a function called 'collectOddValues', that returns odd numbers from an array.</b> </h6>
+                  <p>To visualize it, the function will look like: <code>collectOddValues([1, 2, 3, 4, 5, 6, 7, 8, 9]) // [1, 3, 5, 7, 9]</code> </p>
+                  <div class="p-3 my-3 bg-light">
+                    <pre class="javascript" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000066; font-weight: bold;">const</span> collectOddValues <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span>arr<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// initialize an array to house the results(odd numbers)</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    let result <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// base case condition</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>arr.<span style="color: #660066;">length</span> <span style="color: #339933;">===</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        <span style="color: #000066; font-weight: bold;">return</span> result<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">// check if first item in the array is odd</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>arr<span style="color: #009900;">&#91;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">%</span> <span style="color: #CC0000;">2</span> <span style="color: #339933;">!==</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">        result.<span style="color: #660066;">push</span><span style="color: #009900;">&#40;</span>arr<span style="color: #009900;">&#91;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #009900;">&#125;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #006600; font-style: italic;">/**</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;    * Here we merge the result array to the return value of the recursive call.</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;    * </span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;    * This is the same as: result = result.concat(collectOddValues(arr.slice(1)));</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #006600; font-style: italic;">&nbsp;   */</span></div></li><li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    result <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span>...<span style="color: #660066;">result</span><span style="color: #339933;">,</span> ...<span style="color: #660066;">collectOddValues</span><span style="color: #009900;">&#40;</span>arr.<span style="color: #660066;">slice</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">    <span style="color: #000066; font-weight: bold;">return</span> result<span style="color: #339933;">;</span></div></li><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li></ol></pre>
+                  </div>
+                </section>
+
+                <div class="d-flex flex-row justify-content-between align-items-center">
+                  <div class="p-2"><a class="btn btn-outline-primary btn-sm" href="/Lesson 04 - PS Patterns" role="button">&lt;&lt; Back</a></div>
+                  <div class="p-2"><a class="btn btn-outline-success btn-sm" href="/Lesson 06 - Recursion PS" role="button">Next &gt;&gt;</a></div>                   
+                </div>
+              </div>
+            </div>
+        </div>
+        <aside class="sidebar p-4">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/">Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 02 - Arrays|Objects">Performance of Arrays & Objects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 03 - PS Approach">Problem Solving Approach</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 04 - PS Patterns">Problem Solving Patterns</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white active" href="/Lesson 05 - Recursion">Recursion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 06 - Recursion PS">Recursion Problem Set</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 07 - Searching Algorithms">Searching Algorithms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 08 - Bubble Sort">Bubble Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 09 - Selection Sort">Selection Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 10 - Insertion Sort">Insertion Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 11 - Comparing Sorts">Comparing Bubble, Selection and Insertion Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 12 - Merge Sort">Merge Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 13 - Quick Sort">Quick Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 14 - Radix Sort">Radix Sort</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 15 - Data Structures Introduction">Data Structures Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 16 - Singly Linked Lists">Singly Linked Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 17 - Doubly Linked Lists">Doubly Linked Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 18 - Stacks|Queues">Stacks + Queues</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 19 - Binary Search Trees">Binary Search Trees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 20 - Tree Traversal">Tree Traversal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 21 - Binary Heaps">Binary Heaps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 22 - Hash Tables">Hash Tables</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 23 - Graphs">Graphs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 24 - Graph Traversal">Graph Traversal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 25 - DA">Dijkstra Algorithm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/Lesson 26 - Dynamic Programming">Dynamic Programming</a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="../assets/scripts/lesson-five/app.js"></script>
+</body>
+</html>
